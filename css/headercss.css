@@ -1,0 +1,27 @@
+.header1{
+margin-top: 0%;
+background-color: Blue;
+width: 83%;
+height: 20%;
+}
+.logoo{
+background-color: blue;
+width: 10%;
+height: 20%;
+float: left;
+}
+ 
+.eslogann{
+background-color: white;
+width: 80%;
+float: right;
+height: 10%;
+margin-top: 0px;
+
+}
+.menuu{
+background-color: brown;
+width: 80%;
+height: 10%;
+float: right;
+}

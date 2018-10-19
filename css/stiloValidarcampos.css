@@ -1,0 +1,33 @@
+/*
+ * Specific styles of signin component
+ */
+/*
+ * General styles
+ */
+
+ input[type="email"]:focus:invalid {
+  -webkit-appearance: none;
+  background-color:#fad0d0;
+  border: 1px solid #e85c5c;
+  outline: none;
+  box-shadow: 0 0 20px red;
+}
+
+input[type="email"]:focus:valid {
+  -webkit-appearance: none;
+  background-color:#fad0d0;
+  border: 1px solid #e85c5c;
+  outline: none;
+  box-shadow: 0 0 20px red;
+}
+
+input[type="email"] {
+padding:.5em;
+  
+&;:required {
+    border:1px red solid;
+  }
+ &;:hover:required {
+  background-color:orange;
+  }
+}
