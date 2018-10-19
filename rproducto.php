@@ -1,47 +1,26 @@
 <!DOCTYPE html>
-
 <head>
-
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">	
-
 	<title> Tabla dinamica </title>
-
      <?php
-
   require_once "php/conexion.php";
-
   $conexion=conexion()
-
 ?>
-
-     <?php 
-
+     <?php
         require_once "configuracion.php";                
-
    ?>
-
     <link rel="stylesheet" href="css/estilos.css">
 
 </head>
-
-
-
-<body>
-  
+<body>  
 
 <div class="container" id="menu">
-     <?php 
-
+     <?php
         require_once "header.php";        
-
-   ?> 
-	
+   ?> 	
 
 		<div class="container" id="tabla"></div>
-
-<!-- modal para registros nuevos  -->   
-
-    
+<!-- modal para registros nuevos  -->       
 
     <div class="container">    
 
@@ -484,17 +463,10 @@
 <script type="text/javascript">
 
   $(document).ready(function(){
-
-
-
     // funcion para limpiar modal de producto
-
     limpiarMproducto();
-
     // colocar el focus en modal edicion 
-
     editarMproducto();
-
     // colocar el focus en los filtros de las tablas  
 
   //  FocusMfiltros();    
@@ -503,11 +475,7 @@
 
     ventaCosto(); 
 
-
-
     $('#nuevoProducto').click(function(){
-
-
 
       //  codigo_barra =$('#codigo_barra').val();
 

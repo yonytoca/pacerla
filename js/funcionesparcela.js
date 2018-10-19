@@ -925,7 +925,6 @@ function agregarAgroquimica(nombre,nota){
 
 		function agregaformSiembra(datos){
 
-			
 
 			d=datos.split("||");
 

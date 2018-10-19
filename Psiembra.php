@@ -379,15 +379,10 @@
 
 <script type="text/javascript">
 
-  $(document).ready(function(){
 
-
-
-  
+  $(document).ready(function(){  
 
     $('#guardarnuevo').click(function(){
-
-
 
         idproducto =$('#idproducto').val();
 

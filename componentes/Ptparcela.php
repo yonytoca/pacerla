@@ -1,31 +1,17 @@
 <?php
 
 	require_once "../php/conexion.php";
-
 	$conexion=conexion()
-
 ?>
 
-
-
 <script>
-
 	$(document).ready(function () {
-
    $('#entradafilter').keyup(function () {
-
       var rex = new RegExp($(this).val(), 'i');
-
         $('.contenidobusqueda tr').hide();
-
         $('.contenidobusqueda tr').filter(function () {
-
             return rex.test($(this).text());
-
         }).show();
-
-
-
         })
 
    FocusMfiltros(); 
@@ -33,10 +19,7 @@
 
 
 });	 
-
 </script>
-
-
 
 <div class="panel panel-default">    
 
@@ -57,12 +40,6 @@
           </div>
 
     </div>
-
-
-
-  
-
-
 
 		<table class="table table-hover table-condensed table-bordered" class="table table-striped">                     
 
@@ -150,7 +127,7 @@
 
 <!-- 				<td align="center">
 
-					<button class="btn btn-danger glyphicon glyphicon-remove" id="eliminar"							onclick="eliminarProveedor(<?php echo $idp = $ver[0] ?>)">				
+					<button class="btn btn-danger glyphicon glyphicon-remove" id="eliminar"							onclick="eliminarProveedor(<?php // echo $idp = $ver[0] ?>)">				
 
 					</button>
 

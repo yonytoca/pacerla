@@ -1,4 +1,22 @@
+<?php
+  require_once "php/conexion.php";
+  $conexion=conexion();
 
+  $v1='admin';
+  $v2='123';
+
+
+      $sql="SELECT * FROM usuario ";
+        $resul=mysqli_query($conexion,$sql);
+        $ver=mysqli_num_rows($resul); 
+
+  if($ver==0){
+      $sql="insert into usuario(nombre,clave)
+            values('$v1','$v2')";    
+      echo $resul=mysqli_query($conexion,$sql);
+    } 
+
+?>
 
 <!DOCTYPE html>
 
@@ -48,9 +66,6 @@
 
 				<input type="submit" id="login" name=""   value="Entrar">
 
-                
-
-                
 
 				<a href="#">Olvidaste tu Clave</a>
 
@@ -68,9 +83,7 @@
 
 <script type="text/javascript">
 
-  $(document).ready(function(){
-
-          
+  $(document).ready(function(){          
 
             $('#login').click(function(){
 
@@ -79,8 +92,6 @@
             //iniciarSesion();
  
         }); 
-
-
 
   // $('#modalEdicion').on('shown.bs.modal', function () {
 

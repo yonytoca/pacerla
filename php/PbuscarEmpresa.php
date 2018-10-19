@@ -10,7 +10,7 @@
 
      <tr >
        <td >
-         <img src="img/logovtd.png" width="155" height="94" alt=""/> 
+         <img src="img/logojimenez.png" width="155" height="94" alt=""/> 
        </td>
                  
               <td align="center" >

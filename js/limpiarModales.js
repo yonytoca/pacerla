@@ -91,6 +91,14 @@ function limpiarOrden(){
               $('#snombre').focus();              
           }) 
       }  
+
+// colocar el focus en el modal edicion de creacion de producto
+    function siembraNuevo(){
+          $('#modalEdicion').on('shown.bs.modal', function () {   
+              $('#cantidadu').focus();              
+          }) 
+      }  
+
 // colocar el focus en el modal edicion de creacion de producto
     function socioEdicion(){
           $('#modalEdicion').on('shown.bs.modal', function () {   
