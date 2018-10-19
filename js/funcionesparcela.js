@@ -296,23 +296,20 @@
 
 
 			        detalle =$('#detalleu').val();
-
-			        cantidad =$('#cantidadu').val();             
-
-			        idparcela =$('#idparcelau').val();			
-
-					idgasto =$('#idgasto').val();	
-
-
+			        cantidad =$('#cantidadu').val();
+			        idparcela =$('#idparcelau').val();
+					idgasto =$('#idgasto').val();
+					factura =$('#idfacturau').val(); 
+        			orden =$('#idordenu').val();
+        			fecha1 =$('#fecha1u').val();
 
 			cadena="detalle=" + detalle +
-
-					"&cantidad=" + cantidad + 
-
+					"&cantidad=" + cantidad +
 					"&idparcela=" + idparcela +
-
+					"&factura=" + factura +
+					"&orden=" + orden +
+					"&fecha1=" + fecha1 +
 					"&idgasto=" + idgasto;
-
 //alert(cadena);
 
 				$.ajax({
@@ -337,7 +334,7 @@
 
 						//$('#tabla').load('componentes/tparcela.php');
 
-						alertify.error("fallo el servidor :(");
+						alertify.error("Faltan datos Obligatorio :(");
 
 					}
 
@@ -727,34 +724,23 @@ function agregarAgroquimica(nombre,nota){
 
 // agregar regrito de gastos  -->
 
-		function agregarGastos(detalle, cantidad, fecha, idparcela,hora){
-
-			
+		function agregarGastos(detalle, cantidad, fecha, idparcela,hora, factura, orden, fecha1){			
 
 			cadena="detalle=" + detalle + 
-
 					"&cantidad=" + cantidad +
-
 					"&fecha=" + fecha +
-
+					"&fecha1=" + fecha1 +
 					"&idparcela=" + idparcela +
-
+					"&factura=" + factura +
+					"&orden=" + orden +
 					"&hora=" + hora;
-
  //alert(cadena);
-
 			$.ajax({
-
-				type:"POST",	
-
+				type:"POST",
 				url:"php/PagregarGastos.php",
-
 				data:cadena,
-
 				success:function(r){
-
 					if(r==1){
-
 								$('#tabla').load('componentes/PtgastosDiario.php');
 
 								alertify.success("agregado con exito :)");
@@ -905,19 +891,15 @@ function agregarAgroquimica(nombre,nota){
 
 
 
-				$('#idgasto').val(d[0]);			
-
-			    $('#detalleu').val(d[1]);		       
-
-		        $('#cantidadu').val(d[2]);        
-
-		        $('#fechau').val(d[3]);
-
-		        $('#horau').val(d[5]);	
-
-		        $('#idparcelau').val(d[4]);	
-
-		        $("#idparcelau").val(d[7], d[1]);		 
+				$('#idgasto').val(d[0]);
+			    $('#detalleu').val(d[1]);
+		        $('#cantidadu').val(d[2]);
+		        $('#fechau').val(d[10]);
+		        $('#horau').val(d[5]);
+		      //  $('#idparcelau').val(d[4]);	
+		        $("#idparcelau").val(d[7], d[1]);
+		        $('#idfacturau').val(d[8]);	
+		        $('#idordenu').val(d[9]);		 
 
 		}		
 
@@ -928,24 +910,13 @@ function agregarAgroquimica(nombre,nota){
 
 			d=datos.split("||");
 
-
-
-				$('#idproductou').val(d[5],d[1]);			
-
-			    $('#cantidadu').val(d[2]);		       
-
-		        $('#idparcelau').val(d[6],d[3]);        
-
+				$('#idproductou').val(d[5],d[1]);
+			    $('#cantidadu').val(d[2]);
+		        $('#idparcelau').val(d[6],d[3]);
 		        $('#idsiembra').val(d[0]);
-
 		        $('#fechasiembrau').val(d[4]);	
-
-		        $('#notau').val(d[7]);	
-
-		       	
-
+		        $('#notau').val(d[7]);
 		}	
-
 
 
 		// cargar la listas de gastos pendiente por parcela

@@ -87,9 +87,7 @@
 
       <div class="modal-body">
 
-           <input type="text" hidden="" value="<?php echo $fecha?>" id="fecha" >
-
-           <input type="text" hidden="" id="hora" value="<?php echo $hora ?>">
+           <input type="text" hidden="" value="<?php echo $fecha?>" id="fecha" >           
 
             <div class="form-group">
 
@@ -119,8 +117,41 @@
 
                 </div>  
 
-          
+           <div class="form-group">
 
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Número de Factura</span>
+
+                      <input type="text" name="" id="idfactura" class="form-control" maxlength="10" onkeypress="return soloNumeros(event)">                         
+
+                    </div>
+
+                </div> 
+
+           <div class="form-group">
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Número de Orden</span>
+
+                      <input type="text" name="" id="idorden" class="form-control" maxlength="10" onkeypress="return soloNumeros(event)">                         
+
+                    </div>
+
+                </div>                           
+
+           <div class="form-group">
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Fecha</span>
+
+                      <input type="date" name="" id="fecha1" class="form-control" maxlength="10" >                         
+
+                    </div>
+
+                </div>   
 <!--            <div class="form-group">
 
                     <div class="input-group">
@@ -267,8 +298,40 @@
 
                 </div>  
 
-          
+           <div class="form-group">
 
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Número de Factura </span>
+
+                      <input type="text" name="" id="idfacturau" class="form-control" maxlength="10" onkeypress="return soloNumeros(event)">                                              
+
+                    </div>
+
+                </div>  
+
+           <div class="form-group">
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Número de Orden</span>
+
+                      <input type="text" name="" id="idordenu" class="form-control" maxlength="10" onkeypress="return soloNumeros(event)">                                              
+
+                    </div>
+
+                </div>            
+           <div class="form-group">
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Fecha</span>
+
+                      <input type="date" name="" id="fecha1u" class="form-control" maxlength="10" >                         
+
+                    </div>
+
+                </div>  
 <!--            <div class="form-group">
 
                     <div class="input-group">
@@ -391,23 +454,20 @@
 
 
         detalle =$('#detalle').val();
-
         cantidad =$('#cantidad').val();
-
-        fecha =$('#fecha').val(); 
-       
+        fecha =$('#fecha').val();  // fecha de registro del gasto 
+        fecha1 =$('#fecha1').val(); // fecha en que se realiso el gasto  
+        factura =$('#idfactura').val(); 
+        orden =$('#idorden').val();       
        hora = document.getElementById("contenedor_reloj").innerHTML;
       //  hora =$('#hora').val();             
 
         idparcela =$('#idparcela').val();
-
-
-
       // alert(rncNull);
 
         if (detalle && cantidad){                    
 
-            agregarGastos(detalle, cantidad, fecha, idparcela, hora)
+            agregarGastos(detalle, cantidad, fecha, idparcela, hora, factura, orden, fecha1)
 
         }else{alertify.error("Proporsiones un detalle y cantidad");}
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-10-2018 a las 18:56:06
+-- Tiempo de generación: 19-10-2018 a las 23:04:32
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 create database parcela;
   use parcela;
-  
+
 CREATE TABLE IF NOT EXISTS `agroquimica` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
@@ -229,6 +229,9 @@ CREATE TABLE IF NOT EXISTS `gastos` (
   `id_parcela` int(20) NOT NULL,
   `hora` varchar(20) NOT NULL,
   `estado` varchar(2) NOT NULL,
+  `id_factura` int(11) unsigned zerofill NOT NULL,
+  `id_orden` int(11) unsigned zerofill NOT NULL,
+  `fecha_gasto` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
