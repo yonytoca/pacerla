@@ -80,16 +80,12 @@
 
 			<tr class="warning">
 
-				<th>Detalle</th>				
-
-				<th>Cantidad</th>				
-
+				<th>Detalle</th>
+				<th>Cantidad</th>
 				<th>Parcela</th>
-
-				<th>Fecha</th>
-
-				<th>Hora</th>
-
+				<th>Fecha</th>				
+				<th>Factura #</th>
+				<th>Orden #</th>
 				<th>Editar</th>
 
 				<!-- <th>Eliminar</th> -->
@@ -102,46 +98,35 @@
 
 			<?php
 
-				$sql="select g.id, g.detalle, g.cantidad, g.fecha, g.hora, p.nombre, g.estado, p.id  from gastos as g, parcela as p where g.id_parcela=p.id";
+				$sql="select g.id, g.detalle, g.cantidad, g.fecha, g.hora, p.nombre, g.estado, p.id, g.id_factura, g.id_orden, g.fecha_gasto  from gastos as g, parcela as p where g.id_parcela=p.id";
 
 				$resul=mysqli_query($conexion,$sql);
 
 				while($ver=mysqli_fetch_row($resul)){
 
-						
 
 						$datos=$ver[0]."||".
-
 							   $ver[1]."||".
-
 							   $ver[2]."||".
-
 							   $ver[3]."||".
-
 							   $ver[4]."||".
-
 							   $ver[5]."||".
-
 							   $ver[6]."||".
+							   $ver[7]."||".
+							   $ver[8]."||".
+							   $ver[9]."||".
+							   $ver[10];								  			
 
-							   $ver[7];								  			
+			?>		
 
-			?>
-
-		
-
-			<tr>				
+			<tr>	
 
 				<td><?php echo $ver[1] ?></td>
-
 				<td><?php echo $ver[2] ?></td>
-
 				<td><?php echo $ver[5] ?></td>
-
-				<td><?php echo $ver[3] ?></td>
-
-				<td><?php echo $ver[4] ?></td>
-
+				<td><?php echo $ver[10] ?></td>				
+				<td><?php echo $ver[8] ?></td>
+				<td><?php echo $ver[9] ?></td>
 				
 
 			<td align="left">
