@@ -1,3 +1,48 @@
+			
+			function calculo01(){				
+
+			         $('#cantidad1').change(function(){                   
+
+			            mp =$('#cantidad1').val();
+			            m =$('#cantidad2').val();
+			           	d = mp * m
+			           	if (d < 0){	
+
+			          // 		document.getElementById('resulmp').innerHTML = 'Cantidad pagada de ser mayor';	           		
+
+			           		$('#cantidad').val(d);		
+
+			           	}else{
+
+			           //		document.getElementById('resulmp').innerHTML = '';
+
+			           		$('#cantidad').val(d);
+			           	}	            
+
+			        });
+
+			    	$('#cantidad2').change(function(){                   
+
+			            mp =$('#cantidad1').val();
+			            m =$('#cantidad2').val();
+			           	d = mp * m
+			           	if (d < 0){	
+
+			          // 		document.getElementById('resulmp').innerHTML = 'Cantidad pagada de ser mayor';	           		
+
+			           		$('#cantidad').val(d);		
+
+			           	}else{
+
+			           //		document.getElementById('resulmp').innerHTML = '';
+
+			           		$('#cantidad').val(d);
+			           	}	            
+
+			        });     
+
+			}
+
 // eliminar datos de factura cancelada
 
 		function eliminarOrden(){
@@ -565,20 +610,14 @@
 
 // agregar producto a forma modal de factura detalle 
 
-		function agregaformOrdenDetalle(datos){
-
-			
+		function agregaformOrdenDetalle(datos){			
 
 			d=datos.split("||");
-
 				$('#idproductou').val(d[0]);
-
-		        $('#descripcionu').val(d[2]);		    
-
+		        $('#descripcionu').val(d[2]);
 		        $('#cantidadu').val(d[3]);      
-
 		        $('#notaAu').val(d[4]);	
-
+		        $('#idunidadu').val(d[5],d[6]);
 		}
 // agregar regrito de parcela  -->
 
@@ -588,13 +627,14 @@
         cantidadA =$('#cantidadA').val();
         notaA =$('#notaA').val(); 
         idorden =$('#idorden').val(); 
+        idunidad =$('#idunidad').val(); 
 
 
 			cadena="descripcionA=" + descripcionA + 
 
 					"&cantidadA=" + cantidadA +
 					"&idorden=" + idorden +
-
+					"&idunidad=" + idunidad +
 					"&notaA=" + notaA ;
 
  //alert(cadena);
@@ -638,11 +678,13 @@
 				      idproductou =$('#idproductou').val();
 				      descripcionu =$('#descripcionu').val();
 				      cantidadu =$('#cantidadu').val();
-				      notaAu =$('#notaAu').val(); 		
+				      notaAu =$('#notaAu').val(); 
+				      idunidadu =$('#idunidadu').val(); 		
 
 			cadena="idproductou=" + idproductou + 
 					"&descripcionu=" + descripcionu +
-					"&cantidadu=" + cantidadu +	
+					"&cantidadu=" + cantidadu +
+					"&idunidadu=" + idunidadu +	
 					"&notaAu=" + notaAu;
 
 //alert(cadena); 

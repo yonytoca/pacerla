@@ -1,79 +1,42 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
 <head>
-
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">	
-
 	<title> Tabla dinamica </title>
-
-       <?php 
-
+         <?php 
         require_once "php/conexion.php";
-
         $conexion=conexion()
-
     ?>
-
-     <?php 
-
-
-
-        require_once "configuracion.php";        
-
+     <?php
+        require_once "configuracion.php";  
    ?>
 
     <?php @$fecha = date("d/m/Y");
           @$hora = date("g:i a"); ?>  
 
-
-
-
-
-
-
     <link rel="stylesheet" href="css/estilos.css">
-
 </head>
 
-
-
-<body>  
-
-
-         
+<body>         
 
 <div class="container">
-
      <?php 
+        require_once "header.php";   
 
-        require_once "header.php";        
-
-   ?>  
+      ?> 
 
   <div hidden="" id="contenedor_reloj"></div>
-
 		<div class="container" id="tabla"></div>
-
-
     <div class="container">    
-
        <div class="modal fese" id="modalNuevo" data-backdrop="static" data-keyboard="false">
+         <div class="modal-dialog">        
 
-         <div class="modal-dialog">            
+           <div class="modal-content">               
 
-           <div class="modal-content">
-
-                
-
-               <!-- header de registros de proveedor  -->
-
-                
+               <!-- header de registros de proveedor  -->               
 
                 <div class="modal-header">
-
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>                            
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>             
 
                     <h4 class="modal-title">Agregar Nuevo Gasto</h4>
 
@@ -105,13 +68,22 @@
 
 
 
-           <div class="form-group">
+           <div class="form-group rows">
 
-                    <div class="input-group">
-
+                  <div class="input-group">
                         <span class="input-group-addon">Cantidad</span>
-
-                      <input type="text" name="" id="cantidad" class="form-control" maxlength="10" onkeypress="return soloNumeros(event)">                         
+                  
+                  <div class="col-xs-4">
+                    <input type="text" name="" id="cantidad1" placeholder="Precio" class="form-control" maxlength="10" onkeypress="return soloNumeros(event)"> 
+                  </div>
+                  
+                   <div class="col-xs-4">
+                    <input type="text" name="" id="cantidad2" placeholder="Cantidad" class="form-control" maxlength="10" onkeypress="return soloNumeros(event)"> 
+                  </div>
+                  
+                  <div class="col-xs-4">
+                    <input type="text" name="" id="cantidad" class="form-control" maxlength="10" onkeypress="return soloNumeros(event)"> 
+                  </div>                           
 
                     </div>
 
@@ -445,8 +417,8 @@
 
   $(document).ready(function(){
 
-
-
+//calculo de cantidad por precio
+      calculo01();
   
 
     $('#guardarnuevo').click(function(){

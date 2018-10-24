@@ -16,7 +16,7 @@
 
   <div >   
 
-    <div class="panel-tabla" >
+    <div class="panel-tabla" > 
 
       <?php  require_once"./php/PbuscarEmpresa.php"; ?>
 
@@ -36,8 +36,10 @@
 
             <?php
 
+             
 
-                $sql="select * from orden_detalle where id_orden =".$idO;
+                $sql=" select o.id, o.id_orden, o.descripcion, o.cantidad, o.nota, o.id_unidad_medida, u.nombre
+               from orden_detalle as o, unidadmedida as u  where o.id_unidad_medida = u.id and id_orden=".$idO;
 
                 $resul=mysqli_query($conexion,$sql);
 
@@ -59,7 +61,7 @@
 
                 <td ><?php echo $ver[2] ?></td>
 
-                <td ><?php echo $ver[3] ?></td>        
+                <td ><?php echo $ver[3]." ".$ver[6] ?></td>        
 
                 <td ><?php echo $ver[4] ?></td>
 

@@ -46,10 +46,11 @@
 				$cont = 1;
 
 			//	$id_factura=$_POST['idfactura'];
+ 
 
 
-
-				$sql="select *	from orden_detalle  where id_orden=".$id;
+				$sql="select o.id, o.id_orden, o.descripcion, o.cantidad, o.nota, o.id_unidad_medida, u.nombre
+							 from orden_detalle as o, unidadmedida as u  where o.id_unidad_medida = u.id and id_orden=".$id;
 
 				$resul=mysqli_query($conexion,$sql);
 
@@ -58,15 +59,12 @@
 						
 
 						$datos=$ver[0]."||".
-
 							   $ver[1]."||".
-
 							   $ver[2]."||".
-
 							   $ver[3]."||".
-
 							   $ver[4]."||".
-
+							   $ver[5]."||".
+							   $ver[6]."||".
 							   $upd=1;	
 
 
@@ -80,7 +78,7 @@
 
 				<td><?php echo $ver[2] ?></td>
 
-				<td><?php echo $ver[3] ?></td>
+				<td><?php echo $ver[3]." ".$ver[6] ?></td>
 
 				<td><?php echo $ver[4] ?></td>
 

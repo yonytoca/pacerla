@@ -170,17 +170,26 @@
   }
 </style>
               
-    <div class="row">       
-
-       
+    <div class="row">         
                 <div id="agregarOrden" class="alinearleft" class="input-group" > 
-                  <div class="col-md-6"> 
+                  <div class="col-md-5"> 
                    <input id="descripcionA" type="text" class="form-control"  inpu-sm placeholder="Producto" maxlength="50">
                  </div>
                  <div class="col-md-2"> 
                    <input id="cantidadA" type="text" class="form-control"  inpu-sm placeholder="Cantidad" onkeypress="return soloNumeros(event)">
                  </div>  
-                 <div class="col-md-3">   
+                 <div class="col-md-2">
+                     <select id="idunidad" class="form-control" >                             
+                            <?php
+                               $sql2="select * from unidadmedida";
+                                $resul2=mysqli_query($conexion,$sql2);
+                                while($ver2=mysqli_fetch_row($resul2)){
+                             ?>
+                             <option value="<?php echo $ver2[0]; ?>"><?php echo $ver2[1]; ?></option> 
+                             <?php } ?>                              
+                      </select>   
+                 </div>
+                 <div class="col-md-2">   
                    <input id="notaA" type="text" class="form-control" inpu-sm placeholder="Nota" maxlength="50">
                  </div>
                  <div class="col-md-1" class="alinearleft" >    
@@ -213,7 +222,7 @@
 
     <div class="modal-content">
 
-      <div cla modal-smss="modal-header">
+      <div class modal-smss="modal-header">
 
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
@@ -255,7 +264,7 @@
 
         Pagar
 
-        </button>        
+        </button>     
 
       </div>
 
@@ -266,57 +275,102 @@
 </div>
 
 <!-- modal para editar los registros  -->
+    <div class="container">  
+       <div class="modal fese" id="modalEdicion" data-backdrop="static" data-keyboard="false">
+         <div class="modal-dialog">        
+            <div class="modal-content">       
+
+               <!-- header de registros de proveedor  -->                
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    <h4 class="modal-title">Actualizar Datos </h4>
+
+                </div>
+
+               <!-- Contenido de la proveedor  -->                
+
+      <div class="modal-body">
+
+           <input type="text" hidden=""   id="idunidad" >
+
+           <input type="text" hidden="" value="<?php echo date('dmyGis')?> " id="rncReloj" >
+
+           <div class="form-group">
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Descricpion</span>
+
+                      <input type="text" id="descripcionu" class="form-control"  >                                    
+
+                    </div>
+
+                </div>  
+
+          
+
+           <div class="form-group rows">
+
+                    <div class="input-group">
+                               
+                     
+                        <span class="input-group-addon">Cantidad</span>
+
+                  <div class="col-xs-8" >     
+                      <input type="text" id="cantidadu" class="form-control"  inpu-sm>                         
+                  </div>  
+                  <div class="col-xs-4" >
+                    
+                  
+                     <select id="idunidadu" class="form-control" >                             
+                            <?php
+                               $sql2="select * from unidadmedida";
+                                $resul2=mysqli_query($conexion,$sql2);
+                                while($ver2=mysqli_fetch_row($resul2)){
+                             ?>
+                             <option value="<?php echo $ver2[0]; ?>"><?php echo $ver2[1]; ?></option> 
+                             <?php } ?>                              
+                      </select>
+                    </div>
+                  </div>
+
+                </div> 
+                
+           <div class="form-group">
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Nota</span>
+
+                      <input type="text" id="notaAu" class="form-control"  inpu-sm>                         
+
+                    </div>
+
+                </div>   
+
+          <!-- Footer de la ventana  -->
+
+            <div class="modal-footer" id="oculto">
 
 
-
-<div class="modal fade" id="modalEdicion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-
-  <div class="modal-dialog modal-sm" role="document">
-
-    <div class="modal-content">
-
-      <div class modal-smss="modal-header">
-
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-        <h4 class="modal-title" id="myModalLabel">Actualizar producto</h4>
-
-      </div>
-
-      <div class="modal-body" >      
-
-        <input type="text" hidden=""  id="idproductou" name="">        
-
-        <input type="text" id="idorden" hidden="" >
-
-        <label>Descricpion </label>
-
-        <input type="text" name="" id="descripcionu" class="form-control" inpu-sm>
-
-        <label>Cantidad</label>
-
-        <input type="text" name="" id="cantidadu" class="form-control" inpu-sm>
-
-        <label>Nota</label>
-
-        <input type="text" name="" id="notaAu" class="form-control" inpu-sm>
-
-        </div>            
-
-      <div class="modal-footer">
-
-        <button type="button" class="btn btn-primary" data-dismiss="modal" id="ActualizarOrden" onclick="ActulizarOrdenDetalle()" >
+                                         <button type="button" class="btn btn-primary" data-dismiss="modal" id="ActualizarOrden" onclick="ActulizarOrdenDetalle()" >
 
         Actualizar
 
-        </button>        
+        </button> 
 
-      </div> 
-
-    </div>
-
+            </div> 
+        </div>
+     </div>
+   </div>
   </div>
+</div>
 
+
+
+</div>
 </div>
 
 </div>
@@ -407,11 +461,7 @@ $('#modalEdicion').on('shown.bs.modal', function () {
 
             total=$('#total').val();
 
-            comprobanteF = document.getElementById("resultadoC").innerHTML;
-
-                      
-
-         
+            comprobanteF = document.getElementById("resultadoC").innerHTML;         
 
           if (total !=0){
 
@@ -429,7 +479,7 @@ $('#modalEdicion').on('shown.bs.modal', function () {
 
             //location.reload();      
 
-      //   window.location.href = '#rfactura.php';           
+      //   window.location.href = '#rfactura.php';       
 
           
 
