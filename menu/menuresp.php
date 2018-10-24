@@ -18,7 +18,7 @@
  
 		<nav>
 			<ul>
-				<li class="dropdown"><a href="./Pgastos.php" class="glyphicon glyphicon-home" > Inicio</a></li>      
+				<li class="dropdown"><a href="./Porden.php" class="glyphicon glyphicon-home" > Inicio</a></li>      
 				
 				<li class="submenu">
 					<li class="dropdown "><a class="dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown" href="#"> Registros </a>
