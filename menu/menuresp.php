@@ -18,20 +18,21 @@
  
 		<nav>
 			<ul>
-				<li class="dropdown"><a href="./Pgastos.php" class="glyphicon glyphicon-home" > Inicio</a></li>      
+				<li class="dropdown"><a href="./Porden.php" class="glyphicon glyphicon-home" > Inicio</a></li>      
 				
 				<li class="submenu">
 					<li class="dropdown "><a class="dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown" href="#"> Registros </a>
-					<ul class="children">
-						<li><a href="./Pparcela.php"><div id="">Parcela</div></a></li>
+					<ul class="children">					
 
           <li><a href="./Psocio.php"><div id="">Socio</div></a></li>
+          <li><a href="./Pparcela.php"><div id="">Parcela</div></a></li>
           <li><a href="./Pagroquimica.php"><div id="">Agroquimica</div></a></li>
           
           <li><a href="./rempresa.php">Crear Empresa</a></li>
           <li><a href="./rcliente.php">Crear Cliente</a></li>
           <li><a href="./rproducto.php">Crear Cultivo</a></li>
           <li><a href="./rtipopago.php">Crear Tipo de pago</a></li>
+          <li><a href="./punidadMedida.php">Crear Unidad de Medida</a></li>
           <li><a href="./rusuario.php">Crear Usuario</a></li>
           <!--  <li><a href="./ritbi.php">Itebis </a></li> -->
 
@@ -54,6 +55,7 @@
 				 <li class="dropdown "><a class="glyphicon glyphicon-list-alt" data-toggle="dropdown" href="#"> Reportes </a>
 				 	<ul class="children">          
 					    <li><a href="./Pgastos.php"><div id="">Gastos Por Parcela</div></a></li> 
+					    <li><a href="./PRsocio.php"><div id="">Socios</div></a></li> 
 					</ul> 
 				 <li><a href="./Psiembra.php"><div id="">Siembra</div></a></li>	
 

@@ -47,7 +47,7 @@
 
             <button class="btn btn-primary" data-toggle="modal" data-target="#modalNuevo">
 
-				Agregar 
+				Agregar Nueva
 
 				<span class="glyphicon glyphicon-plus"></span>
 
@@ -105,7 +105,7 @@
 
 			<?php
 
-				$sql="select s.id, p1.descripcion, s.cantidad, p.nombre, s.fecha_siembra, s.id_producto, s.id_parcela, s.nota  from siembra as s, parcela as p,  producto as p1 where s.id_producto=p1.id and s.id_parcela=p.id";
+				$sql="select s.id, p1.descripcion, s.cantidad, p.nombre, s.fecha_siembra, s.id_producto, s.id_parcela, s.nota, u.nombre, u.id  from siembra as s, parcela as p,  producto as p1, unidadmedida as u where s.id_producto=p1.id and s.id_parcela=p.id and s.id_unidad_medida = u.id";
 
 				$resul=mysqli_query($conexion,$sql);
 
@@ -114,20 +114,15 @@
 						
 
 						$datos=$ver[0]."||".
-
 							   $ver[1]."||".
-
 							   $ver[2]."||".
-
 							   $ver[3]."||".
-
 							   $ver[4]."||".
-
 							   $ver[5]."||".
-
 							   $ver[6]."||".
-
-							   $ver[7];				
+							   $ver[7]."||".
+							   $ver[8]."||".
+							   $ver[9];				
 
 			?>
 
@@ -138,7 +133,7 @@
 
 				<td><?php echo $ver[1] ?></td>
 
-				<td><?php echo $ver[2] ?></td>
+				<td><?php echo $ver[2]." ".$ver[8]  ?></td>
 
 				<td><?php echo $ver[3] ?></td>
 

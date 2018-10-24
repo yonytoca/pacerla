@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-10-2018 a las 23:04:32
+-- Tiempo de generación: 24-10-2018 a las 14:35:04
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 create database parcela;
   use parcela;
-
+  
 CREATE TABLE IF NOT EXISTS `agroquimica` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
@@ -381,6 +381,7 @@ CREATE TABLE IF NOT EXISTS `parcela` (
   `numero` varchar(50) NOT NULL,
   `zona` varchar(50) NOT NULL,
   `nota` text NOT NULL,
+  `id_socio` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -452,6 +453,7 @@ CREATE TABLE IF NOT EXISTS `siembra` (
   `id_parcela` int(15) NOT NULL,
   `fecha_siembra` varchar(50) NOT NULL,
   `nota` text NOT NULL,
+  `id_unidad_medida` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -467,10 +469,22 @@ CREATE TABLE IF NOT EXISTS `socio` (
   `apellido` varchar(50) NOT NULL,
   `cedula` varchar(15) NOT NULL,
   `direccion` varchar(100) NOT NULL,
-  `id_parcela` int(11) NOT NULL,
   `telefono` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `unidadmedida`
+--
+
+CREATE TABLE IF NOT EXISTS `unidadmedida` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(30) NOT NULL,
+  `nota` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

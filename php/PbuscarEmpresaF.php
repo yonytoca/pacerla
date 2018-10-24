@@ -45,8 +45,9 @@
                     float: left;
                   }
           </style>
-<br>
+
 <div class="tabla"> 
+  <h4 id="logo" align="center"><font size="5"> Factura </font>  </h4>
   <div class="caja1">
     
                     <table> 

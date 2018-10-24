@@ -46,13 +46,13 @@
 
       <h4>Lista de Socios</h4>       
 
-            <button class="btn btn-primary" data-toggle="modal" data-target="#modalNuevo">
+<!--             <button class="btn btn-primary" data-toggle="modal" data-target="#modalNuevo">
 
 				Agregar Socio
 
 				<span class="glyphicon glyphicon-plus"></span>
 
-			</button> 
+			</button>  -->
 
           </div>
 
@@ -93,7 +93,7 @@
 				<th>Telefono</th>
 				<th>Dirección</th>				
 
-				<th>Editar</th>
+				<th>Parcelas</th>
 
 				<!-- <th>Eliminar</th> -->
 
@@ -133,12 +133,20 @@
 				<td><?php echo $ver[4] ?></td>
 
 				<td align="left">
-
-						<button class="btn btn-warning glyphicon glyphicon-pencil btn-xs" data-toggle="modal" data-target="#modalEdicion" onclick="agregaformSocio('<?php echo $datos ?>')"></button>
-
+							    <?php 
+									$sql1="select * from parcela where id_socio=$ver[0]";
+									$resul1=mysqli_query($conexion,$sql1);
+									while($ver1=mysqli_fetch_row($resul1)){
+								?>
+										<table>
+											<tr>
+												<td>
+													<?php echo $ver1[1]; ?>
+												</td>
+											</tr>
+										</table>
                    
-
-                    
+								<?php } ?>                   
 
 				</td>
 

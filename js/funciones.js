@@ -2833,10 +2833,7 @@ alertify.confirm('Eliminar Usuario', 'Seguro que deseas eliminar', function(){
 
 
 
-			        }); 				
-
-
-
+			        }); 
 			}
 
 // calcular la suma para el cobro de facturas pendientes  

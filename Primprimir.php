@@ -65,7 +65,7 @@
         require_once "php/conexion.php";
 
           $conexion=conexion();             
-
+ 
         
 
         //require_once "rempresa.php"; 

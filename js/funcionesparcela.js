@@ -1,3 +1,48 @@
+			
+			function calculo01(){				
+
+			         $('#cantidad1').change(function(){                   
+
+			            mp =$('#cantidad1').val();
+			            m =$('#cantidad2').val();
+			           	d = mp * m
+			           	if (d < 0){	
+
+			          // 		document.getElementById('resulmp').innerHTML = 'Cantidad pagada de ser mayor';	           		
+
+			           		$('#cantidad').val(d);		
+
+			           	}else{
+
+			           //		document.getElementById('resulmp').innerHTML = '';
+
+			           		$('#cantidad').val(d);
+			           	}	            
+
+			        });
+
+			    	$('#cantidad2').change(function(){                   
+
+			            mp =$('#cantidad1').val();
+			            m =$('#cantidad2').val();
+			           	d = mp * m
+			           	if (d < 0){	
+
+			          // 		document.getElementById('resulmp').innerHTML = 'Cantidad pagada de ser mayor';	           		
+
+			           		$('#cantidad').val(d);		
+
+			           	}else{
+
+			           //		document.getElementById('resulmp').innerHTML = '';
+
+			           		$('#cantidad').val(d);
+			           	}	            
+
+			        });     
+
+			}
+
 // eliminar datos de factura cancelada
 
 		function eliminarOrden(){
@@ -125,7 +170,8 @@
 
 		        zona =$('#zonau').val();        
 
-		        nota =$('#notau').val();	
+		        nota =$('#notau').val();
+		        idsocio =$('#psociou').val();	
 
 
 
@@ -136,6 +182,7 @@
 					"&zona=" + zona +
 
 					"&nota=" + nota + 
+					"&idsocio=" + idsocio + 
 
 					"&id=" + id;
 
@@ -237,7 +284,7 @@
 
 		        direccion =$('#sdireccionu').val();        
 
-		        idparcela =$('#sidparcelau').val();	
+		        telefono =$('#stelefonou').val();	
 
 				idsocio =$('#idsocio').val();	
 
@@ -251,7 +298,7 @@
 
 					"&direccion=" + direccion + 
 
-					"&idparcela=" + idparcela +
+					"&telefono=" + telefono +
 
 					"&idsocio=" + idsocio;
 
@@ -286,6 +333,39 @@
 			});
 
 		}
+
+// agregar parcela por socios 
+
+		function actualizaSocioP(){       
+
+		        idparcela =$('#sidparcelauP').val();	
+				idsocio =$('#idsocioP').val();
+
+			cadena="idparcela=" + idparcela +
+					"&idsocio=" + idsocio;
+
+//alert(cadena);
+
+				$.ajax({
+				type:"POST",
+				url:"php/PactualizaSocioP.php",
+				data:cadena,
+				success:function(r){
+					if(r==1){
+						$('#tabla').load('componentes/Ptsocio.php');
+						alertify.success("Parcela agregada con exito :)");
+
+					}else{
+						$('#tabla').load('componentes/tparcela.php');
+						alertify.error("fallo el servidor :(");
+
+					}
+
+				}
+
+			});
+
+		}		
 
 
 
@@ -349,31 +429,24 @@
 		// actualizar datos de proveedor  
 
 		function actualizaSiembra(){
-
-
-
       
 
-		idsiembra =$('#idsiembra').val();	
-
+		idsiembra =$('#idsiembra').val();
         idproducto =$('#idproductou').val();
-
         cantidad =$('#cantidadu').val();
-
         idparcela =$('#idparcelau').val(); 
-        notau =$('#notau').val();      
-
-    
+        idunidadu =$('#idunidadu').val(); 
+        notau =$('#notau').val(); 
+        fechau =$('#fechasiembrau').val();   
 
 
 
 			cadena="idsiembra=" + idsiembra +
-
 					"&cantidad=" + cantidad + 
-
 					"&idproducto=" + idproducto +
 					"&notau=" + notau +
-
+					"&idunidadu=" + idunidadu +
+					"&fechau=" + fechau +
 					"&idparcela=" + idparcela;
 
 //alert(cadena);
@@ -408,11 +481,63 @@
 
 		}
 
+	// actualizar datos de proveedor  
+
+		function actualizaUnidadMedida(){      
+
+		nombre =$('#nombreu').val();	
+
+        idunidad =$('#idunidad').val();
+
+        notau =$('#notau').val();      
+
+    
+
+
+
+			cadena="nombre=" + nombre +
+
+					"&idunidad=" + idunidad + 
+
+					"&notau=" + notau;
+
+//alert(cadena);
+
+				$.ajax({
+
+				type:"POST",	
+
+				url:"php/PactualizaUnidadMediad.php",
+
+				data:cadena,
+
+				success:function(r){
+
+					if(r==1){
+
+						$('#tabla').load('componentes/PtunidadMediada.php');
+
+						alertify.success("actualizados con exito :)");
+
+					}else{				
+
+					//	$('#tabla').load('componentes/tparcela.php');
+
+						alertify.error("fallo el servidor :(");
+
+					}
+
+				}
+
+			});
+
+		}		
+
 
 
 // agregar regrito de parcela  -->
 
-		function agregarParcela(nombre,numero,zona,nota){
+		function agregarParcela(nombre,numero,zona,nota,psocio){
 
 		//	bus =$('#bus').val();
 
@@ -422,6 +547,7 @@
 			cadena="nombre=" + nombre + 
 					"&numero=" + numero +
 					"&zona=" + zona +
+					"&psocio=" + psocio +
 					"&nota=" + nota;
  //alert(cadena);
 
@@ -484,20 +610,14 @@
 
 // agregar producto a forma modal de factura detalle 
 
-		function agregaformOrdenDetalle(datos){
-
-			
+		function agregaformOrdenDetalle(datos){			
 
 			d=datos.split("||");
-
 				$('#idproductou').val(d[0]);
-
-		        $('#descripcionu').val(d[2]);		    
-
+		        $('#descripcionu').val(d[2]);
 		        $('#cantidadu').val(d[3]);      
-
 		        $('#notaAu').val(d[4]);	
-
+		        $('#idunidadu').val(d[5],d[6]);
 		}
 // agregar regrito de parcela  -->
 
@@ -507,13 +627,14 @@
         cantidadA =$('#cantidadA').val();
         notaA =$('#notaA').val(); 
         idorden =$('#idorden').val(); 
+        idunidad =$('#idunidad').val(); 
 
 
 			cadena="descripcionA=" + descripcionA + 
 
 					"&cantidadA=" + cantidadA +
 					"&idorden=" + idorden +
-
+					"&idunidad=" + idunidad +
 					"&notaA=" + notaA ;
 
  //alert(cadena);
@@ -557,11 +678,13 @@
 				      idproductou =$('#idproductou').val();
 				      descripcionu =$('#descripcionu').val();
 				      cantidadu =$('#cantidadu').val();
-				      notaAu =$('#notaAu').val(); 		
+				      notaAu =$('#notaAu').val(); 
+				      idunidadu =$('#idunidadu').val(); 		
 
 			cadena="idproductou=" + idproductou + 
 					"&descripcionu=" + descripcionu +
-					"&cantidadu=" + cantidadu +	
+					"&cantidadu=" + cantidadu +
+					"&idunidadu=" + idunidadu +	
 					"&notaAu=" + notaAu;
 
 //alert(cadena); 
@@ -684,12 +807,12 @@ function agregarAgroquimica(nombre,nota){
 
 // agregar regrito de proveedor  -->
 
-		function agregarSocio(nombre,apellido, cedula, direccion, idparcela){		
+		function agregarSocio(nombre,apellido, cedula, direccion, telefono){		
 
 			cadena="nombre=" + nombre + 
 					"&apellido=" + apellido +
 					"&cedula=" + cedula +
-					"&idparcela=" + idparcela +
+					"&telefono=" + telefono +
 					"&direccion=" + direccion;
 // alert(cadena);
 
@@ -762,10 +885,52 @@ function agregarAgroquimica(nombre,nota){
 		}		
 
 
+// agregar regrito de proveedor  -->
+
+		function agregarUnidadMedida(nombre, nota){
+
+			
+
+			cadena="nombre=" + nombre + 
+					"&nota=" + nota ; 
+
+ //alert(cadena);
+
+			$.ajax({
+
+				type:"POST",	
+
+				url:"php/PagregarUnidadMedida.php",
+
+				data:cadena,
+
+				success:function(r){
+
+					if(r==1){
+
+								$('#tabla').load('componentes/PtunidadMediada.php');
+
+								alertify.success("agregado con exito :)");
+
+							}else{
+
+					//}				
+
+					//	$('#tabla').load('componentes/tabla.php');
+
+						alertify.error("Fallo el servidor ");
+
+					}
+
+				}
+
+			});
+
+		}	
 
 // agregar regrito de proveedor  -->
 
-		function agregarSiembra(idproducto,idparcela, cantidad, fechasiembra, nota){
+		function agregarSiembra(idproducto,idparcela, cantidad, fechasiembra, nota,unidad){
 
 			
 
@@ -775,6 +940,7 @@ function agregarAgroquimica(nombre,nota){
 
 					"&cantidad=" + cantidad +
 					"&nota=" + nota +
+					"&idunidad=" + idunidad +
 
 					"&fechasiembra=" + fechasiembra; 
 
@@ -816,23 +982,16 @@ function agregarAgroquimica(nombre,nota){
 
 // cargar datos de cliente en la modal
 
-		function agregaformParcela(datos){
-
-			
+		function agregaformParcela(datos){			
 
 			d=datos.split("||");
 
-
-
-				$('#idparcelau').val(d[0]);			
-
-			    $('#nombreu').val(d[1]);		       
-
-		        $('#numerou').val(d[2]);        
-
+				$('#idparcelau').val(d[0]);
+			    $('#nombreu').val(d[1]);
+		        $('#numerou').val(d[2]); 
 		        $('#zonau').val(d[3]);
-
-		        $('#notau').val(d[4]);	
+		        $('#notau').val(d[4]);
+		        $('#psociou').val(d[5],d[6]);	
 
 		}
 // cargar datos de agroquimica en la modal
@@ -859,26 +1018,23 @@ function agregarAgroquimica(nombre,nota){
 
 // cargar datos de cliente en la modal
 
-		function agregaformSocio(datos){
-
-			
+		function agregaformSocio(datos){			
 
 			d=datos.split("||");
 
-
-
-				$('#idsocio').val(d[0]);			
-
-			    $('#snombreu').val(d[1]);		       
-
-		        $('#sapellidou').val(d[2]);        
-
+				$('#idsocio').val(d[0]);	
+			    $('#snombreu').val(d[1]);
+		        $('#sapellidou').val(d[2]);
 		        $('#scedulau').val(d[3]);
+		        $('#sdireccionu').val(d[4]);
+		        $('#stelefonou').val(d[5]);	
 
-		        $('#sdireccionu').val(d[5]);	
-
-		        $('#sidparcelau').val(d[6], d[4]);	
-
+		     //    $('#idsocioP').val(d[0]);	
+			    // $('#snombreuP').val(d[1]);
+		     //    $('#sapellidouP').val(d[2]);
+		     //    $('#scedulauP').val(d[3]);
+		     //    $('#sdireccionuP').val(d[5]);
+		     //    $('#sidparcelauP').val(d[6], d[4]);	
 		}		
 
 // cargar datos de gasto en la modal
@@ -914,11 +1070,21 @@ function agregarAgroquimica(nombre,nota){
 			    $('#cantidadu').val(d[2]);
 		        $('#idparcelau').val(d[6],d[3]);
 		        $('#idsiembra').val(d[0]);
-		        $('#fechasiembrau').val(d[4]);	
+		        $('#fechasiembrau').val(d[4]);
+		        $('#idunidadu').val(d[9],d[8]);	
 		        $('#notau').val(d[7]);
 		}	
 
+// actualizar unidad medida
+		function agregaformUnidadMedida(datos){
 
+
+			d=datos.split("||");
+
+				$('#idunidad').val(d[0]);
+			    $('#nombreu').val(d[1]);		
+		        $('#notau').val(d[2]);
+		}	
 		// cargar la listas de gastos pendiente por parcela
 
 		function GastosParcela(){

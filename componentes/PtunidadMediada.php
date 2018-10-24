@@ -28,8 +28,7 @@
 
         })
 
-   FocusMfiltros(); 
-
+   FocusMfiltros();  
 
 
 });	 
@@ -44,11 +43,11 @@
 
       <div class="panel-tabla">
 
-      <h4>Lista de Socios</h4>       
+      <h4>Lista Unidad Medida</h4>       
 
             <button class="btn btn-primary" data-toggle="modal" data-target="#modalNuevo">
 
-				Agregar Socio
+				Agregar 
 
 				<span class="glyphicon glyphicon-plus"></span>
 
@@ -84,15 +83,9 @@
 
 			<tr class="warning">
 
+				<th>Codigo</th>
 				<th>Nombre</th>				
-
-				<th>Apellido</th>
-
-				<th>Cedúla</th>
-
-				<th>Telefono</th>
-				<th>Dirección</th>				
-
+				<th>Nota</th>
 				<th>Editar</th>
 
 				<!-- <th>Eliminar</th> -->
@@ -105,36 +98,37 @@
 
 			<?php
 
-				$sql="select * 
-						from socio 
-						";
+				$sql="select * from unidadmedida ";
 
 				$resul=mysqli_query($conexion,$sql);
 
 				while($ver=mysqli_fetch_row($resul)){
 
+						
 
 						$datos=$ver[0]."||".
+
 							   $ver[1]."||".
-							   $ver[2]."||".
-							   $ver[3]."||".
-							   $ver[4]."||".
-							   $ver[5];				
+
+							   $ver[2];				
 
 			?>
+
 		
 
 			<tr>				
+				<td><?php echo $ver[0] ?></td>
 
 				<td><?php echo $ver[1] ?></td>
+
 				<td><?php echo $ver[2] ?></td>
-				<td><?php echo $ver[3] ?></td>
-				<td><?php echo $ver[5] ?></td>			
-				<td><?php echo $ver[4] ?></td>
+		
+
+
 
 				<td align="left">
 
-						<button class="btn btn-warning glyphicon glyphicon-pencil btn-xs" data-toggle="modal" data-target="#modalEdicion" onclick="agregaformSocio('<?php echo $datos ?>')"></button>
+					<button class="btn btn-warning glyphicon glyphicon-pencil btn-xs" data-toggle="modal" data-target="#modalEdicion" onclick="agregaformUnidadMedida('<?php echo $datos ?>')"></button>
 
                    
 
@@ -144,7 +138,7 @@
 
 <!-- 				<td align="center">
 
-					<button class="btn btn-danger glyphicon glyphicon-remove" id="eliminar"							onclick="eliminarProveedor(<?php// echo $idp = $ver[0] ?>)">				
+					<button class="btn btn-danger glyphicon glyphicon-remove" id="eliminar"							onclick="eliminarProveedor(<?php // echo $idp = $ver[0] ?>)">				
 
 					</button>
 
