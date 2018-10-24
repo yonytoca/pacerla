@@ -69,6 +69,8 @@
 
 				<th>Nota</th>
 
+				<th>Socio</th>
+
 				<th>Editar</th>
 
 				<!-- <th>Eliminar</th> -->
@@ -80,24 +82,20 @@
 		<tbody class="contenidobusqueda">
 
 			<?php
-
-				$sql="select * from parcela";
-
+				$sql="select p.id, p.nombre, p.numero, p.zona, p.nota, p.id_socio, s.nombre from parcela as p
+					left join socio as s on s.id=p.id_socio";
 				$resul=mysqli_query($conexion,$sql);
 
 				while($ver=mysqli_fetch_row($resul)){
-
 						
 
 						$datos=$ver[0]."||".
-
 							   $ver[1]."||".
-
 							   $ver[2]."||".
-
 							   $ver[3]."||".
-
-							   $ver[4];				
+							   $ver[4]."||".
+							   $ver[5]."||".
+							   $ver[6];				
 
 			?>
 
@@ -113,15 +111,10 @@
 
 				<td><?php echo $ver[4] ?></td>
 
-
+				<td><?php echo $ver[6] ?></td>
 
 				<td align="left">
-
-					<button class="btn btn-warning glyphicon glyphicon-pencil btn-xs" data-toggle="modal" data-target="#modalEdicion" onclick="agregaformParcela('<?php echo $datos ?>')"></button>
-
-                   
-
-                    
+					<button class="btn btn-warning glyphicon glyphicon-pencil btn-xs" data-toggle="modal" data-target="#modalEdicion" onclick="agregaformParcela('<?php echo $datos ?>')"></button>                   
 
 				</td>
 

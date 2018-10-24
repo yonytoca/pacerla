@@ -96,7 +96,7 @@ function realizaProceso(){
 
                   //      $("#resultado").html(response);
 
-                       location.href ="Pgastos.php"; 
+                       location.href ="Porden.php"; 
 
                 }
 

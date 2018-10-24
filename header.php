@@ -7,7 +7,7 @@
 <table align="right" class="table table-hover table-condensed table-bordered" class="table table-striped">
 	<tr><td>
    
-<div class="logo"><a href="./Pgastos.php">
+<div class="logo"><a href="./Porden.php">
   <img src="img/global.png" width="145%" height="80" alt=""/></a>
 </div> 
 

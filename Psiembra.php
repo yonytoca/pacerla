@@ -73,17 +73,11 @@
 
                 </div>
 
-               <!-- Contenido de la proveedor  -->       
-
-               
-
-               
+               <!-- Contenido de la proveedor  -->                   
 
       <div class="modal-body">
 
-           <input type="text" hidden="" value="<?php echo date('dmyGis')?> " id="rncReloj" >
-
-      
+           <input type="text" hidden="" value="<?php echo date('dmyGis')?> " id="rncReloj" >      
 
             <div class="form-group">
 
@@ -117,14 +111,28 @@
 
 
 
-           <div class="form-group">
-
+           <div class="form-group rows">
+                                  
+               
                     <div class="input-group">
 
                         <span class="input-group-addon">Cantidad</span>
+<div class="col-xs-8">
 
-                      <input type="text" name="" id="cantidad" class="form-control" maxlength="10" onkeypress="return soloNumeros(event)">                         
+                      <input type="text" name="" id="cantidad" class="form-control" maxlength="10" onkeypress="return soloNumeros(event)"> 
+  </div> 
+  <div class="col-xs-4">                      
+                        <select id="idunidad" class="form-control" >                             
+                            <?php
+                               $sql2="select * from unidadmedida";
+                                $resul2=mysqli_query($conexion,$sql2);
+                                while($ver2=mysqli_fetch_row($resul2)){
+                             ?>
+                             <option value="<?php echo $ver2[0]; ?>"><?php echo $ver2[1]; ?></option> 
+                             <?php } ?>                              
 
+                       </select>                          
+ </div>
                     </div>
 
                 </div>  
@@ -132,34 +140,21 @@
           
 
            <div class="form-group">
-
                     <div class="input-group">
-
                         <span class="input-group-addon">Parcela</span>
-
-                      <select id="idparcela" class="form-control" >                                
+                      <select id="idparcela" class="form-control" >                             
 
                             <?php
-
                                $sql2="select * from parcela";
-
                                 $resul2=mysqli_query($conexion,$sql2);
-
-                                while($ver2=mysqli_fetch_row($resul2)){ 
-
-                             ?>     
-
+                                while($ver2=mysqli_fetch_row($resul2)){
+                             ?>
                              <option value="<?php echo $ver2[0]; ?>"><?php echo $ver2[1]; ?></option> 
+                             <?php } ?>                              
 
-                             <?php } ?>
-
-                               
-
-                       </select>                          
-
-                    </div>
-
-                </div>  
+                       </select> 
+                   </div>
+              </div>  
 
 
 
@@ -202,19 +197,12 @@
 
 <!-- modal para editar los registros  -->
 
-    <div class="container">    
-
+    <div class="container">  
        <div class="modal fese" id="modalEdicion" data-backdrop="static" data-keyboard="false">
+         <div class="modal-dialog">        
+            <div class="modal-content">               
 
-         <div class="modal-dialog">            
-
-           <div class="modal-content">
-
-                
-
-               <!-- header de registros de proveedor  -->
-
-                
+               <!-- header de registros de proveedor  -->                
 
                 <div class="modal-header">
 
@@ -268,14 +256,28 @@
 
 
 
-           <div class="form-group">
-
+           <div class="form-group rows">
+                                  
+               
                     <div class="input-group">
 
                         <span class="input-group-addon">Cantidad</span>
+<div class="col-xs-8">
 
-                      <input type="text" name="" id="cantidadu" class="form-control" maxlength="10" onkeypress="return soloNumeros(event)">                         
+                      <input type="text" name="" id="cantidadu" class="form-control" maxlength="10" onkeypress="return soloNumeros(event)"> 
+  </div> 
+  <div class="col-xs-4">                      
+                        <select id="idunidadu" class="form-control" >                             
+                            <?php
+                               $sql2="select * from unidadmedida";
+                                $resul2=mysqli_query($conexion,$sql2);
+                                while($ver2=mysqli_fetch_row($resul2)){
+                             ?>
+                             <option value="<?php echo $ver2[0]; ?>"><?php echo $ver2[1]; ?></option> 
+                             <?php } ?>                              
 
+                       </select>                          
+ </div>
                     </div>
 
                 </div>  
@@ -312,7 +314,7 @@
 
                 </div>  
 
-<!-- 
+
 
            <div class="form-group">
 
@@ -320,19 +322,23 @@
 
                         <span class="input-group-addon">Fecha siembra</span>
 
-                      <input type="text" name="" value="<?php //echo $fecha?>" id="fechasiembrau" class="form-control" maxlength="30" inpu-sm>                         
+                      <input type="text" name="" value="<?php echo $fecha?>" id="fechasiembrau" class="form-control" maxlength="30" inpu-sm>                         
 
                     </div>
 
-                </div>  -->                  
-
+                </div>                   
+           <div class="form-group">
+                    <div class="input-group " >                                         
+                        <textarea id="notau" rows="5" cols="50" placeholder="Nota" ></textarea>                               
+                    </div>
+                </div> 
           <!-- Footer de la ventana  -->
 
             <div class="modal-footer" id="oculto">
 
-                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <!--  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> -->
 
-                 <button type="button" class="btn btn-primary" id="actualizadatos">Gurdar Cambios</button>
+                 <button type="button" class="btn btn-primary" id="actualizadatos" data-dismiss="modal">Gurdar Cambios</button>
 
             </div>    
 
@@ -388,7 +394,8 @@
 
         cantidad =$('#cantidad').val();
 
-        idparcela =$('#idparcela').val();        
+        idparcela =$('#idparcela').val();  
+        idunidad =$('#idunidad').val();        
 
         fechasiembra =$('#fechasiembra').val(); 
         nota =$('#nota').val();     
@@ -399,7 +406,7 @@
 
         if (idproducto && idparcela && cantidad && fechasiembra){                    
 
-            agregarSiembra(idproducto,idparcela, cantidad, fechasiembra, nota)
+            agregarSiembra(idproducto,idparcela, cantidad, fechasiembra, nota,idunidad)
 
         }else{alertify.error("Todos los campos son obligatorios");}
 

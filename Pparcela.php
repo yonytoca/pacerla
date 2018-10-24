@@ -30,27 +30,17 @@
    ?>   
 
   <div id="conReloj"></div>
-
 		<div class="container" id="tabla"></div>
-
-
     <div class="container">    
-
        <div class="modal fese" id="modalNuevo" data-backdrop="static" data-keyboard="false">
+         <div class="modal-dialog">        
 
-         <div class="modal-dialog">            
+           <div class="modal-content">               
 
-           <div class="modal-content">
-
-                
-
-               <!-- header de registros de proveedor  -->
-
-                
+               <!-- header de registros de proveedor  -->                
 
                 <div class="modal-header">
-
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>                            
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>             
 
                     <h4 class="modal-title">Agregar Nueva Parcela</h4>
 
@@ -124,6 +114,35 @@
 
                 </div>                
 
+                <div class="form-group">
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Selecione Socio</span>
+
+                    
+
+                      <select id="psocio" class="form-control" >                                
+
+                            <?php
+                               $sql2="select * from socio";
+                                $resul2=mysqli_query($conexion,$sql2);
+                                while($ver2=mysqli_fetch_row($resul2)){ 
+                             ?>     
+
+                             <option value="<?php echo $ver2[0]; ?>"><?php echo $ver2[1]; ?></option> 
+
+                             <?php } ?>
+
+                               
+
+                       </select> 
+
+                    </div>
+
+                </div>   
+
+
            </div>  
 
           <!-- Footer de la ventana  -->
@@ -168,7 +187,7 @@
 
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>                            
 
-                    <h4 class="modal-title">Actualizar datos de la Parcela</h4>
+                    <h4 class="modal-title">Actualizar Datos</h4>
 
                 </div>
 
@@ -230,15 +249,41 @@
 
                 </div>     	  
 
+            
+
+                <div class="form-group">
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Selecione Socio</span>                    
+
+                      <select id="psociou" class="form-control" >                                
+
+                            <?php
+
+                               $sql2="select * from socio";
+
+                                $resul2=mysqli_query($conexion,$sql2);
+
+                                while($ver2=mysqli_fetch_row($resul2)){ 
+
+                             ?>     
+
+                             <option value="<?php echo $ver2[0]; ?>"><?php echo $ver2[1]; ?></option> 
+
+                             <?php } ?>                               
+
+                       </select> 
+
+                    </div>
+
+                </div>                
              </div> 
-
-               
-
            <div class="modal-footer" id="oculto">
 
-                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <!--  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> -->
 
-                 <button type="button" class="btn btn-primary" id="actualizadatos">Gurdar Cambios</button>               
+                 <button type="button" class="btn btn-primary" id="actualizadatos" data-dismiss="modal">Gurdar Cambios</button>               
 
             </div>
 
@@ -281,9 +326,6 @@
 	});
 
 </script>
-
-
-
 <script type="text/javascript">
 
   $(document).ready(function(){  
@@ -293,14 +335,15 @@
         numero =$('#pnumero').val();
         zona =$('#pzona').val(); 
         nota =$('#pnota').val();
+        psocio =$('#psocio').val();
 
       // alert(rncNull);
 
-        if (nombre && zona){                    
+        if (nombre && psocio){                   
 
-            agregarParcela(nombre,numero,zona,nota)
+            agregarParcela(nombre,numero,zona,nota,psocio)
 
-        }else{alertify.error("Proporsiones un Nombre y Zona");}
+        }else{alertify.error("Proporsiones un Nombre y Socio");}
 
         
 

@@ -88,7 +88,7 @@ if($row = mysqli_fetch_array($result))
 
   //Redireccionamos a la pagina: index.php
 
-   header("Location: ../Pgastos.php");  
+   header("Location: ../Porden.php");  
 
  }
 

@@ -35,21 +35,11 @@
 
         require_once "header.php";        
 
-   ?>     
+   ?>      
 
-  
-
-  <div id="conReloj"></div>
-
-	
+  <div id="conReloj"></div>	
 
 		<div class="container" id="tabla"></div>
-
-
-
-
-
-
 
     <div class="container">    
        <div class="modal fese" id="modalNuevo" data-backdrop="static" data-keyboard="false">
@@ -76,8 +66,6 @@
                     </div>
 
                 </div>
-
-
 
            <div class="form-group">
 
@@ -435,7 +423,7 @@
 
 	$(document).ready(function(){
 
-		$('#tabla').load('componentes/Ptsocio.php');    
+		$('#tabla').load('componentes/PtRsocio.php');    
 
 	});
 

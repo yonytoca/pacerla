@@ -226,9 +226,9 @@
 
      <div class="modal-footer">
 
-         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+       <!--   <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> -->
 
-        <button type="button" class="btn btn-primary" id="nuevoEmpresa">Gurdar Empresa</button>
+        <button type="button" class="btn btn-primary" id="nuevoEmpresa" data-dismiss="modal">Gurdar Empresa</button>
 
      </div>    
 
