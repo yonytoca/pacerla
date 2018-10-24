@@ -1,6 +1,6 @@
 <?php header('Content-Type: text/html; charset=UTF-8'); ?>
 <body onload="HoraActual()"> 
-  
+ 
  <link rel="stylesheet" href="libreria/bootstrap-3.3.7/dist/css/bootstrap.min.css"> 
 
 

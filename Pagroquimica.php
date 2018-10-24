@@ -6,15 +6,18 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">	
 
-	<title> Tabla dinamica </title>
-
-     <?php 
+<?php 
 
         require_once "configuracion.php";        
 
         
 
    ?>
+
+
+	<title> Sistema De Control De Parcelas </title>
+
+     
 
     <link rel="stylesheet" href="css/estilos.css">
 
